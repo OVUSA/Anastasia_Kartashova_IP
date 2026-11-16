@@ -78,7 +78,7 @@
   "form": {
     "_help": "Подключите ОДИН способ. endpoint: адрес формы Formspree (https://formspree.io/f/xxxx) или Web3Forms (https://api.web3forms.com/submit, тогда впишите access_key). Либо yandex_forms_url: ссылка на форму Yandex Forms для встраивания (iframe) — тогда endpoint не нужен.",
     "endpoint": "https://api.web3forms.com/submit",
-    "access_key": "",
+    "access_key": "f3128ab3-1494-4c9a-b8a1-557a1e421dfd",
     "yandex_forms_url": "",
     "title": "Свяжитесь со мной",
     "name_label": "Имя",
