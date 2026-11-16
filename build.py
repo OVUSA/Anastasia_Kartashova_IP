@@ -194,6 +194,11 @@ def sitemap_xml() -> str:
 
 
 def build() -> None:
+    for required in (*STATIC_FILES, "assets"):
+        if not (ROOT / required).exists():
+            sys.exit(f"ERROR: '{required}' is missing from the project folder. "
+                     "Make sure it was uploaded to the repository.")
+
     # Render first: if a section fails, the previous dist/ is left untouched.
     page = render_page()
 

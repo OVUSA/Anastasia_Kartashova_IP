@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: https://ovusa.github.io/Anastasia_Kartashova_IP/
+Sitemap: https://ovusa.github.io/Anastasia_Kartashova_IP/sitemap.xml
