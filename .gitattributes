@@ -1,0 +1,4 @@
+# Normalise line endings (the project was created on Windows)
+* text=auto
+*.png binary
+*.jpg binary
