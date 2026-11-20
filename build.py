@@ -105,9 +105,10 @@ def hero() -> str:
 
 def service_card(service: dict) -> str:
     points = "".join(f"<li>{esc(p)}</li>" for p in service["points"])
+    text = esc(service["text"]).replace("\n", "<br>")
     dark = " dark" if service.get("dark") else ""
     return (f'<article class="card{dark}" id="{service["id"]}"><h3>{esc(service["title"])}</h3>'
-            f'<p class="muted">{esc(service["text"])}</p><ul>{points}</ul></article>')
+            f'<p class="muted">{text}</p><ul>>{points}</ul></article>')
 
 
 def services() -> str:
