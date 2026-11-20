@@ -129,7 +129,7 @@ def about() -> str:
     photo_alt = f'{SITE["owner"]}, {SITE["brand"]}'
     return section("about", f'''<div class="about"><img src="assets/mark.png" alt="{esc(photo_alt)}" width="340" height="332" loading="lazy">
 <div><h2>{esc(cfg["title"])}</h2>{paragraphs}
-<div class="charity"><h3>{esc(cfg["charity_title"])}</h3><p class="muted">{esc(cfg["charity"])}</p><div class="links">{links}</div></div></div></div>''')
+</div></div>''')
 
 
 def faq() -> str:
