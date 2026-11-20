@@ -51,10 +51,6 @@ h3{font-size:24px;letter-spacing:-.015em;line-height:1.2;margin-bottom:14px}
 .about{display:grid;gap:56px;grid-template-columns:1fr 1.4fr;align-items:center}
 .about img{width:100%;max-width:340px;justify-self:center}
 .about p{margin-bottom:18px;max-width:34em}
-.charity{margin-top:32px;background:var(--card);border-radius:var(--r);padding:32px}
-.charity h3{font-size:20px}
-.charity .links{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px}
-.charity .links a{color:var(--green-600);font-weight:600}
 /* faq */
 details{background:var(--card);border-radius:20px;padding:22px 28px;margin-bottom:12px}
 summary{cursor:pointer;font-weight:600;color:var(--green-900);list-style:none;display:flex;justify-content:space-between;gap:16px}
