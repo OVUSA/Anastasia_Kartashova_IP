@@ -124,12 +124,9 @@ def cases() -> str:
 def about() -> str:
     cfg = SITE["about"]
     paragraphs = "".join(f"<p>{esc(p)}</p>" for p in cfg["paragraphs"])
-    links = "".join(f'<a href="{esc(link["url"])}" target="_blank" rel="noopener">{esc(link["label"])}</a>'
-                    for link in cfg["links"])
     photo_alt = f'{SITE["owner"]}, {SITE["brand"]}'
     return section("about", f'''<div class="about"><img src="assets/mark.png" alt="{esc(photo_alt)}" width="340" height="332" loading="lazy">
-<div><h2>{esc(cfg["title"])}</h2>{paragraphs}
-</div></div>''')
+<div><h2>{esc(cfg["title"])}</h2>{paragraphs}</div></div>''')
 
 
 def faq() -> str:
