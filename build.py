@@ -99,16 +99,24 @@ def hero() -> str:
     cfg = SITE["hero"]
     return f'''<section class="hero" id="top"><div class="wrap">
 <img src="assets/logo.png" alt="{esc(cfg["logo_alt"])}" width="300" height="340">
-<h1>{esc(cfg["h1"])}</h1><p>{esc(cfg["lead"])}</p>
+<h1>{esc(cfg["h1"])}</h1><p>{esc(cfg["lead"]).replace(chr(10), "<br>")}</p>
 <div class="actions"><a class="btn" href="#contact">{esc(cfg["cta"])}</a><a class="btn ghost" href="#services">{esc(cfg["cta2"])}</a></div></div></section>'''
+
+
+def quote() -> str:
+    """Quiet quote band between the hero and the services; the author appears as a footnote."""
+    cfg = SITE["quote"]
+    return f'''<section class="quote-band" aria-label="Цитата"><div class="wrap"><figure class="quote">
+<blockquote><p>«{esc(cfg["text"])}»<sup aria-hidden="true">{esc(cfg["mark"])}</sup></p></blockquote>
+<figcaption><span aria-hidden="true">{esc(cfg["mark"])} </span>{esc(cfg["author"])}</figcaption></figure></div></section>'''
 
 
 def service_card(service: dict) -> str:
     points = "".join(f"<li>{esc(p)}</li>" for p in service["points"])
-    text = esc(service["text"]).replace("\n", "<br>")
+    text = esc(service["text"]).replace("\n", "<br>")  # "\n" in content.json = line break
     dark = " dark" if service.get("dark") else ""
     return (f'<article class="card{dark}" id="{service["id"]}"><h3>{esc(service["title"])}</h3>'
-            f'<p class="muted">{text}</p><ul>>{points}</ul></article>')
+            f'<p class="muted">{text}</p><ul>{points}</ul></article>')
 
 
 def services() -> str:
@@ -119,7 +127,7 @@ def services() -> str:
 def cases() -> str:
     items = "".join(f'<li class="case">{esc(c)}</li>' for c in SITE["cases"])
     return section("cases", f'''<h2>{esc(SITE["cases_title"])}</h2>
-<ul class="cases">{items}</ul><p class="note muted">{esc(SITE["cases_note"])}</p>''', tight=True)
+<ul class="cases">{items}</ul><p class="note muted">{esc(SITE["cases_note"]).replace(chr(10), "<br>")}</p>''', tight=True)
 
 
 def about() -> str:
@@ -159,7 +167,7 @@ def contact_form() -> str:
 {access_key}<input type="hidden" name="subject" value="Заявка с сайта {esc(SITE["brand"])}">
 <label>{esc(cfg["name_label"])}<input name="name" type="text" autocomplete="name" required maxlength="120"></label>
 <label>{esc(cfg["email_label"])}<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
-<label>{esc(cfg["message_label"])}<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
+<label>{esc(cfg["message_label"])}<textarea name="message" rows="3" required maxlength="4000"></textarea></label>
 <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"><input class="hp" type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true">
 <button class="btn" type="submit">{esc(cfg["button"])}</button><p class="fstatus" role="status" aria-live="polite"></p></form>
 <script src="form.js" defer></script>'''
@@ -177,7 +185,7 @@ def footer() -> str:
 
 # ---------- build ----------
 def render_page() -> str:
-    sections = hero() + services() + cases() + about() + faq() + contact()
+    sections = hero() + quote() + services() + cases() + about() + faq() + contact()
     return head() + "<body>" + nav() + "<main>" + sections + "</main>" + footer() + "</body></html>"
 
 
